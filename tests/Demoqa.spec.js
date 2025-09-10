@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import testcase from"../testData/{}demoqa.json"
 
 test("verify the demo Qa text box fields", async ({ page }) => {
   await page.goto("https://demoqa.com/")
@@ -9,13 +10,13 @@ test("verify the demo Qa text box fields", async ({ page }) => {
 
   await expect(page).toHaveURL("https://demoqa.com/text-box")
 
-  await page.locator("//input[@placeholder='Full Name']").fill("nandini")
+  await page.locator("//input[@placeholder='Full Name']").fill(testcase.fullname)
 
-  await page.locator("//input[@placeholder='name@example.com']").fill("rnandini793636@gmail.com")
+  await page.locator("//input[@placeholder='name@example.com']").fill(testcase.email)
 
-  await page.locator("//textarea[@placeholder='Current Address']").fill("nagasandra")
+  await page.locator("//textarea[@placeholder='Current Address']").fill(testcase.currentAdress)
 
-  await page.locator("(//textarea[@class='form-control'])[2]").fill("bangalore")
+  await page.locator("(//textarea[@class='form-control'])[2]").fill(testcase.permanentAdress)
 
   await page.locator("(//button[@type='button'])[2]").click()
 
