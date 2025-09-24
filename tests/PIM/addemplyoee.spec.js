@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test'
+
 import nandu from"../../testData/{}orangehrm.json"
+
 test('verify the employee details', async ({ page }) => {
   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
 
@@ -24,11 +26,8 @@ test('verify the employee details', async ({ page }) => {
   await page.locator("(//input[@class='oxd-input oxd-input--active'])[2]").fill("897650")
 
   await page.locator("//button[@type='submit']").click()
-  
 
-
-
-
-  
-
- });
+  // Verify the success message or navigation after adding employee
+  await expect(page.locator('.oxd-text--toast-message')).toBeVisible()
+  //await expect(page.locator('.oxd-text--toast-message')).toContainText('Successfully Saved')
+});
